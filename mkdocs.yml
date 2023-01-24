@@ -1,1 +1,31 @@
 site_name: My Docs
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: grey
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - toc.integrate
+nav:
+    - Home: index.md
+    - Nested Pages:
+      - 'Nested Page One': 'nested-pages/nested-pages-1.md'
+      - 'Nested Page Two': 'nested-pages/nested-pages-2.md'
