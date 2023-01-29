@@ -1,6 +1,7 @@
-site_name: My Docs
+site_name: Reggi
 theme:
   name: material
+  logo: ../assets/favicon.png
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -18,14 +19,30 @@ theme:
         icon: material/brightness-7
         name: Switch to light mode
   features:
+    - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.indexes
     - navigation.top
     - toc.follow
     - toc.integrate
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+
+plugins:
+  - glightbox
+
+
 nav:
     - Home: index.md
-    - Nested Pages:
-      - 'Nested Page One': 'nested-pages/nested-pages-1.md'
-      - 'Nested Page Two': 'nested-pages/nested-pages-2.md'
+    - Install:
+      - install/index.md
+      - 'iOS': 'install/ios.md'
+      - 'Android': 'install/android.md'
+    - Troubleshooting:
+      - troubleshooting/index.md
+      - 'iOS: White Screen': 'troubleshooting/ios-white-screen.md'
