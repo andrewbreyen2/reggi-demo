@@ -22,11 +22,11 @@ jobs:
         with:
           args: 'SUCCESS: Branch: ${{ github.ref_name }}' 
       
-      - name: A/B Check
-        if: ${{ envA }} != ${{ envB }}
-        run: |
-          echo "::error file={name},line={line},endLine={endLine},title={title}::{message}"
-          exit 1
+      - name: fail
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Action failed')
       
       
       - name: Discord notification fail
