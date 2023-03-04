@@ -1,0 +1,23 @@
+name: Send discord message
+
+on: [push, pull_request]
+
+jobs:
+  send-discord:
+    name: Send discord message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "Waiting 10 seconds"
+
+      - name: Sleep for 10 seconds
+        run: sleep 10s
+        shell: bash
+
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+        args: 'The project {{ EVENT_PAYLOAD }} has been deployed.'
+      
