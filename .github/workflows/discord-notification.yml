@@ -22,13 +22,6 @@ jobs:
         with:
           args: 'SUCCESS: Branch: ${{ github.ref_name }}' 
       
-      - name: fail
-        uses: actions/github-script@v3
-        with:
-          script: |
-            core.setFailed('Action failed')
-      
-      
       - name: Discord notification fail
         if: jobs.<job_id>.if == 'failure'
         env:
