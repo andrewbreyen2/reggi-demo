@@ -27,5 +27,5 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'SUCCESSFUL BUILD: Branch: ${{ github.ref_name }}' 
+          args: 'SUCCESSFUL BUILD: Branch: ${{ github.ref_name }} :tada:' 
     
