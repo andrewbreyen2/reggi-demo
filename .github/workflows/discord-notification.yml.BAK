@@ -1,0 +1,31 @@
+name: Send discord message
+
+on: [push, pull_request]
+
+jobs:
+  send-discord:
+    name: Send discord message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+      
+      - name: Echo
+        run: echo "Waiting 10 seconds"
+
+      - name: Build
+        run: sleep 10s
+        shell: bash
+
+      - name: Deploy
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "ONMAIN-Waiting 10 seconds"
+
+      - name: Discord notification
+        if: ${{ success() }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'SUCCESSFUL BUILD: Branch: ${{ github.ref_name }} :tada:' 
+    
