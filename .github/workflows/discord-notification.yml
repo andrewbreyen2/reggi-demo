@@ -9,9 +9,6 @@ jobs:
     steps:
       - name: Echo
         run: echo "Waiting 10 seconds"
-      
-      - name: Echo
-        run: echo $job
 
       - name: Sleep for 10 seconds
         run: sleep 10s
@@ -22,5 +19,5 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'GitHub build result: ${{ job }}\nBranch: ${{ github.ref_name }}'
+          args: 'GitHub build result: ${{ job }} Branch: ${{ github.ref_name }}'
       
