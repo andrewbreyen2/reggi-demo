@@ -15,9 +15,24 @@ jobs:
         shell: bash
 
       - name: Discord notification
+        if: jobs.<job_id>.if == 'success'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
         with:
-          args: 'GitHub build result: ${{ job }} Branch: ${{ github.ref_name }}'
+          args: 'SUCCESS: Branch: ${{ github.ref_name }}' 
       
+      - name: A/B Check
+        if: ${{ envA }} != ${{ envB }}
+        run: |
+          echo "::error file={name},line={line},endLine={endLine},title={title}::{message}"
+          exit 1
+      
+      
+      - name: Discord notification fail
+        if: jobs.<job_id>.if == 'failure'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'FAILURE: Branch: ${{ github.ref_name }}'
