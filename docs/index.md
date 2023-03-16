@@ -18,3 +18,5 @@ But Walmart, Target, any of the other big box app stores: all you can do is look
 
 
 Enter: Reggi.
+
+As i make changes, it will show in the web browser
